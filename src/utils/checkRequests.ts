@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-export const validateEmail = (email: string) => {
+export const validEmail = (email: string) => {
   return String(email)
     .toLowerCase()
     .match(
@@ -13,6 +13,22 @@ export const isValidDate = (d: string) => {
   return date instanceof Date && !isNaN(date.getTime());
 };
 
+export const checkValidRequestSignUp = (req: Request): boolean => {
+  if(!validEmail(req.body.email)){
+    return false;
+  }
+
+  if(req.body.password === "null" || req.body.password === "undefined"){
+    return false;
+  }
+
+  if(req.body.firstName === "null" || req.body.firstName === "undefined"){
+    return false;
+  }
+
+  return true;
+}
+
 export const checkValidRequestNewUser = (req: Request): boolean => {
   if (req.body.username === "null" || req.body.username === "undefined")
     return false;
@@ -21,7 +37,7 @@ export const checkValidRequestNewUser = (req: Request): boolean => {
     return false;
   }
 
-  if (!validateEmail(req.body.email)) {
+  if (!validEmail(req.body.email)) {
     return false;
   }
 

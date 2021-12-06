@@ -3,6 +3,7 @@ import AuthService from "./auth.service";
 import jwt from "jsonwebtoken";
 import debug, { IDebugger } from "debug";
 import { Password } from "../common/services/password";
+import { checkValidRequestSignUp } from "../utils/checkRequests";
 
 const jwtSecret: string = process.env.JWT_SECRET || "123456";
 const tokenExpirationInSeconds = 36000;
@@ -58,6 +59,14 @@ class AuthController {
 
   async signup(req: Request, res: Response, next: NextFunction) {
     try {
+
+      const isValidRequest = checkValidRequestSignUp(req);
+
+      if(!isValidRequest){
+        return res.status(400).send({
+          message: "Bad Request",
+        });
+      }
       const username = req.body.username;
       const email = req.body.email;
       const password = req.body.password;
@@ -71,11 +80,7 @@ class AuthController {
       const mfa = req.body.mfa;
       const isAdmin = false;
 
-      if (Object.keys(req.body).length == 0) {
-        return res.status(400).send({
-          message: "You did not Send the proper data",
-        });
-      }
+      
 
       const user = await AuthService.findUserByEmail(email);
       log("user", user);
