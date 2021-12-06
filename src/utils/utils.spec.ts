@@ -61,6 +61,22 @@ test("ValidEmail should return true", () => {
     const result = validEmail(email);
 
     expect(result).toBe(true);
-})
+});
+
+test("CheckValidRequest should return false", () => {
+    const request: Request = {body: {email: ""}} as Request
+
+    const result = checkValidRequest(request);
+
+    expect(result).toBe(false);
+});
+
+test("CheckValidRequest should return false", () => {
+    const request: Request = {body: {email: "alanjudi.92@gmail.com"}} as Request;
+
+    const result = checkValidRequest(request);
+
+    expect(result).toBe(false);
+});
 
 

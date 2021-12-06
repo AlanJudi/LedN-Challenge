@@ -1,6 +1,7 @@
 node_modules/*
 build/*
 build/common/*
-coverage/*
-coverage/clover.xml
-coverage/lcov-report/*
+*coverage*
+*/coverage/*
+*/coverage/clover.xml
+*/coverage/lcov-report/*

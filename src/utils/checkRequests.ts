@@ -10,7 +10,7 @@ export const validEmail = (email: string) : boolean => {
     if(result){
       return true;
     }
-    
+
     return false
 };
 
@@ -24,11 +24,11 @@ export const checkValidRequestSignUp = (req: Request): boolean => {
     return false;
   }
 
-  if (req.body.password === "null" || req.body.password === "undefined") {
+  if (req.body.password === null || req.body.password === undefined) {
     return false;
   }
 
-  if (req.body.firstName === "null" || req.body.firstName === "undefined") {
+  if (req.body.firstName === null || req.body.firstName === undefined) {
     return false;
   }
 
@@ -36,10 +36,10 @@ export const checkValidRequestSignUp = (req: Request): boolean => {
 };
 
 export const checkValidRequestNewUser = (req: Request): boolean => {
-  if (req.body.username === "null" || req.body.username === "undefined")
+  if (req.body.userName === null || req.body.userName === undefined)
     return false;
 
-  if (req.body.password == "null" || req.body.password === "undefined") {
+  if (req.body.password == null || req.body.password === undefined) {
     return false;
   }
 
@@ -47,11 +47,11 @@ export const checkValidRequestNewUser = (req: Request): boolean => {
     return false;
   }
 
-  if (req.body.firstName === "null" || req.body.firstName === "undefined") {
+  if (req.body.firstName === null || req.body.firstName === undefined) {
     return false;
   }
 
-  if (req.body.lastName === "null" || req.body.lastName === "undefined") {
+  if (req.body.lastName === null || req.body.lastName === undefined) {
     return false;
   }
 
@@ -59,19 +59,20 @@ export const checkValidRequestNewUser = (req: Request): boolean => {
     return false;
   }
 
-  if (req.body.country === "null" || req.body.country === "undefined") {
+  if (req.body.country === null || req.body.country === undefined) {
     return false;
   }
 
   return true;
 };
 
+
 export const checkValidRequest = (req: Request): boolean => {
-  if (req.body.username === "null" || req.body.username === "undefined") {
+  if (req.body.username === null || req.body.username === undefined) {
     return false;
   }
 
-  if (req.body.email == null || undefined) {
+  if (!validEmail(req.body.email)) {
     return false;
   }
 
