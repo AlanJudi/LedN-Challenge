@@ -26,7 +26,7 @@ class JWT {
         next();
       });
     } else {
-      res.status(403).json({ success: false, message: "UnAuthorized" });
+      res.status(401).json({ success: false, message: "UnAuthorized" });
     }
   }
 
@@ -50,11 +50,11 @@ class JWT {
         } else {
           return res
             .status(403)
-            .json({ success: false, message: "UnAuthorized" });
+            .json({ success: false, message: "Forbidden resource" });
         }
       });
     } else {
-      res.status(403).json({ success: false, message: "UnAuthorized" });
+      res.status(401).json({ success: false, message: "UnAuthorized" });
     }
   }
 }
