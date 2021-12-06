@@ -4,6 +4,7 @@ import {
   checkValidTransactionRequest,
   checkValidRequestNewUser,
   isValidDate,
+  validEmail,
 } from "./checkRequests";
 
 
@@ -46,5 +47,20 @@ test("checkValidTransactionRequest should return true", () => {
     const result = checkValidTransactionRequest(request);
     expect(result).toBe(true);
 });
+
+test("ValidEmail should return null", () => {
+    const email:string = "alan";
+
+    const result = validEmail(email);
+    expect(result).toBe(false);
+});
+
+test("ValidEmail should return true", () => {
+    const email:string = "alan@getnada.com";
+
+    const result = validEmail(email);
+
+    expect(result).toBe(true);
+})
 
 

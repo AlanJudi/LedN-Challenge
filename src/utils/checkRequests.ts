@@ -1,11 +1,17 @@
 import { Request, Response, NextFunction } from "express";
 
-export const validEmail = (email: string) => {
-  return String(email)
+export const validEmail = (email: string) : boolean => {
+  const result = String(email)
     .toLowerCase()
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
+
+    if(result){
+      return true;
+    }
+    
+    return false
 };
 
 export const isValidDate = (d: string) => {
