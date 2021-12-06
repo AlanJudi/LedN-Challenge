@@ -14,20 +14,20 @@ export const isValidDate = (d: string) => {
 };
 
 export const checkValidRequestSignUp = (req: Request): boolean => {
-  if(!validEmail(req.body.email)){
+  if (!validEmail(req.body.email)) {
     return false;
   }
 
-  if(req.body.password === "null" || req.body.password === "undefined"){
+  if (req.body.password === "null" || req.body.password === "undefined") {
     return false;
   }
 
-  if(req.body.firstName === "null" || req.body.firstName === "undefined"){
+  if (req.body.firstName === "null" || req.body.firstName === "undefined") {
     return false;
   }
 
   return true;
-}
+};
 
 export const checkValidRequestNewUser = (req: Request): boolean => {
   if (req.body.username === "null" || req.body.username === "undefined")

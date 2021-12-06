@@ -47,9 +47,9 @@ class AuthController {
         }
       } else {
         log("User Not Found");
-        
+
         return res.status(404).json({
-          message: "User Not Found"
+          message: "User Not Found",
         });
       }
     } catch (e) {
@@ -59,10 +59,9 @@ class AuthController {
 
   async signup(req: Request, res: Response, next: NextFunction) {
     try {
-
       const isValidRequest = checkValidRequestSignUp(req);
 
-      if(!isValidRequest){
+      if (!isValidRequest) {
         return res.status(400).send({
           message: "Bad Request",
         });
@@ -79,8 +78,6 @@ class AuthController {
       const referredBy = req.body.referredBy;
       const mfa = req.body.mfa;
       const isAdmin = false;
-
-      
 
       const user = await AuthService.findUserByEmail(email);
       log("user", user);
