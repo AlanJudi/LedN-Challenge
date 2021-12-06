@@ -46,7 +46,10 @@ class AuthController {
         }
       } else {
         log("User Not Found");
-        throw new Error("User Not Found");
+        
+        return res.status(404).json({
+          message: "User Not Found"
+        });
       }
     } catch (e) {
       next(e);
