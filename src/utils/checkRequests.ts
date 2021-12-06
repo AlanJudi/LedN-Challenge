@@ -73,7 +73,7 @@ export const checkValidRequest = (req: Request): boolean => {
 };
 
 export const checkValidTransactionRequest = (req: Request): boolean => {
-  if (!validateEmail(req.body.userEmail)) {
+  if (!validEmail(req.body.userEmail)) {
     return false;
   }
 
