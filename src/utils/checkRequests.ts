@@ -49,7 +49,7 @@ export const checkValidRequestNewUser = (req: Request): boolean => {
     return false;
   }
 
-  if (!isValidDate) {
+  if (!isValidDate(req.body.dob)) {
     return false;
   }
 
