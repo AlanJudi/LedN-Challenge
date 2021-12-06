@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.97% </span>
+                <span class="strong">59.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/49</span>
+                <span class='fraction'>29/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.13% </span>
+                <span class="strong">40.54% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/37</span>
+                <span class='fraction'>15/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.86% </span>
+                <span class="strong">53.48% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/43</span>
+                <span class='fraction'>23/43</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -155,7 +155,7 @@
 <a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,19 +227,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response, NextFunction } from "express";
 &nbsp;
@@ -315,20 +315,20 @@ export const checkValidRequest = <span class="fstat-no" title="function not cove
 <span class="cstat-no" title="statement not covered" >  return true;</span>
 };
 &nbsp;
-export const checkValidTransactionRequest = <span class="fstat-no" title="function not covered" >(r</span>eq: Request): boolean =&gt; {
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!validEmail(req.body.userEmail)) {</span>
+export const checkValidTransactionRequest = (req: Request): boolean =&gt; {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!validEmail(req.body.userEmail)) {
 <span class="cstat-no" title="statement not covered" >    return false;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (isNaN(req.body.amount)) {</span>
+  if (isNaN(req.body.amount)) {
+    return false;
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (req.body.type !== "receive" &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >req.body.type !== "send")</span> {
 <span class="cstat-no" title="statement not covered" >    return false;</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (req.body.type !== "receive" &amp;&amp; req.body.type !== "send") {</span>
-<span class="cstat-no" title="statement not covered" >    return false;</span>
-  }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return true;</span>
+  return true;
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -337,7 +337,7 @@ export const checkValidTransactionRequest = <span class="fstat-no" title="functi
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Mon Dec 06 2021 01:01:26 GMT-0500 (Eastern Standard Time)
+                at Mon Dec 06 2021 01:04:50 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="prettify.js"></script>

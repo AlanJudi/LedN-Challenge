@@ -33,6 +33,18 @@ test("checkValidRequestNewUser should return true => ", () => {
     const result = checkValidRequestNewUser(request);
 
     expect(result).toBe(true);
-})
+});
+
+test("checkValidTransactionRequest should return fasle => ", () => {
+    const request: Request = {body: {userEmail: "alanjudi.92@gmail.com"}} as Request;
+    const result = checkValidTransactionRequest(request);
+    expect(result).toBe(false);
+});
+
+test("checkValidTransactionRequest should return true", () => {
+    const request: Request = {body: {userEmail: "alanjudi.92@gmail.com", amount: 1.0, type: "receive"}} as Request;
+    const result = checkValidTransactionRequest(request);
+    expect(result).toBe(true);
+});
 
 
